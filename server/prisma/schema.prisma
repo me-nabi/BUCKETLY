@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ListItem {
+  id        String   @id @default(cuid())
+  place     String
+  location  String
+  plan      String   @db.Text()
+  image     String   @db.Text()
+  date      DateTime
+  link      String   @db.Text()
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
